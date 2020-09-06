@@ -24,7 +24,7 @@ pipeline {
 
           }
           steps {
-            sh 'mvn -U clean package -Dir=/war; touch test;ls -ltrh;pwd ;ls -ltrh null/; cp null/hello-1.0.war /war/ -r '
+            sh 'mvn -U clean package -Dir=/war; cp null/$project_name-$project_version.war /war/ -r '
           }
         }
 
