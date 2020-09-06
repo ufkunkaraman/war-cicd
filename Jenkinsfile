@@ -23,7 +23,7 @@ pipeline {
 
           }
           steps {
-            sh 'mvn -U clean package -Dir=/war/'
+            sh 'mvn -U clean package -Dir=/war'
           }
         }
 
