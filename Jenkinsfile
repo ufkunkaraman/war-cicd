@@ -54,7 +54,7 @@ pipeline {
 
           }
           steps {
-            sh 'python3 tomcat_publisher.py -t "${tomcat_nodes}"'
+            sh 'python3 /code/tomcat_publisher.py -t "${tomcat_nodes}"'
           }
         }
 
