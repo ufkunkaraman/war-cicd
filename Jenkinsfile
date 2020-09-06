@@ -149,6 +149,6 @@ pipeline {
     tomcat_host = '172.16.232.230'
     context_path = 'myApplication'
     artifact = 'artifact'
-    test_tomcats_nodes = ' [ {"name": "tomcat","ip":"172.16.232.230"}]'
+    test_tomcats_nodes = '{{"name":"tomcat","ip":"172.16.232.230"},{"name": "tomcat","ip":"172.16.232.230"}}'
   }
 }
