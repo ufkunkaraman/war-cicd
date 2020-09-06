@@ -54,8 +54,6 @@ pipeline {
 
           }
           steps {
-            sh 'pwd'
-            sh 'whoami'
             sh 'tomcat-maneger connect http://172.16.232.230:8080/manager admin password  deploy local *.war /hellowor -v v2.0.6 '
           }
         }
