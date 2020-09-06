@@ -12,7 +12,7 @@ pipeline {
           }
           steps {
             sh 'echo "                Database engine is ${testnodeip}"'
-            sh 'cat pom.xml'
+            sh ' export project_name=$(proxml_grep --text_only \'/project/name\' pom.xml); export project_version=$(proxml_grep --text_only \'/project/version\' pom.xml)'
           }
         }
 
