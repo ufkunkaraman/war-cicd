@@ -54,7 +54,7 @@ pipeline {
 
           }
           steps {
-            sh 'tomcat-maneger connect http://172.16.232.230:8080/manager admin password  deploy local *.war /hellowor -v v2.0.6 '
+            sh 'python3 tomcat_publisher.py -t "${tomcat_nodes}"'
           }
         }
 
