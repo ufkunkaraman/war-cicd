@@ -23,7 +23,7 @@ pipeline {
 
           }
           steps {
-            sh '                echo "Database engine is ${testnodeip}"'
+            sh 'echo "path :";pwd'
           }
         }
 
