@@ -12,6 +12,7 @@ pipeline {
           }
           steps {
             sh 'echo "                Database engine is ${testnodeip}"'
+            sh 'cat pom.xml'
           }
         }
 
