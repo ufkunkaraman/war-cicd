@@ -23,7 +23,7 @@ pipeline {
 
           }
           steps {
-            sh 'mvn -U clean package -Dir=/home/sebit/'
+            sh 'mvn -U clean package -Dir=/war/'
           }
         }
 
