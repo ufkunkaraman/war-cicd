@@ -54,7 +54,7 @@ pipeline {
 
           }
           steps {
-            sh 'python3 /code/tomcat_publisher.py -t "${tomcat_nodes}"'
+            sh 'python3 /code/tomcat_publisher.py -t "${test_tomcats_nodes}"'
           }
         }
 
@@ -149,5 +149,6 @@ pipeline {
     tomcat_host = '172.16.232.230'
     context_path = 'myApplication'
     artifact = 'artifact'
+    test_tomcats_nodes = ' [ {"name": "tomcat","ip":"172.16.232.230"}]'
   }
 }
