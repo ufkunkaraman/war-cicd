@@ -23,8 +23,7 @@ pipeline {
 
           }
           steps {
-            sh '''mvn -U clean package -Dir=/war;cp  /var/lib/jenkins/workspace/war-cicd_master@2/null/hello-1.0.war
-  /war/ -r'''
+            sh 'mvn -U clean package -Dir=/war; touch test;ls -ltrh'
           }
         }
 
