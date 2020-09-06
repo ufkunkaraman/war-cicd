@@ -24,7 +24,7 @@ pipeline {
 
           }
           steps {
-            sh 'mvn -U clean package -Dir=/war; cp null/$project_name-$project_version.war /war/ -r '
+            sh 'mvn -U clean package -Dir=/war; export project_name=$(xml_grep --text_only \'/project/name\' pom.xml); export project_version=$(xml_grep --text_only \'/project/version\' pom.xml); cp null/$project_name-$project_version.war /war/ -r '
           }
         }
 
