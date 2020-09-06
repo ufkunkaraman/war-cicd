@@ -23,7 +23,7 @@ pipeline {
 
           }
           steps {
-            sh 'echo "path :";pwd'
+            sh 'mvn -U clean package'
           }
         }
 
