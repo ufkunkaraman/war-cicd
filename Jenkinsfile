@@ -36,7 +36,7 @@ pipeline {
           }
           steps {
             sh 'printenv'
-            sh 'll;pwd;ls -ltrh '
+            sh 'pwd;ls -ltrh '
           }
         }
 
