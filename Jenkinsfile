@@ -23,7 +23,7 @@ pipeline {
 
           }
           steps {
-            sh 'mvn -U clean package'
+            sh 'mvn -U clean package '
           }
         }
 
@@ -36,8 +36,7 @@ pipeline {
           }
           steps {
             sh 'printenv'
-            sh '''echo """curl -v -u ${tomcat_username}:${tomcat_password} -T ${artifact} \'http://\'${tomcat_host}\':\'${tomcat_port}\'/manager/text/deploy?path=//\'${context_path}\'\'
-"""'''
+            sh 'll;pwd;ls -ltrh '
           }
         }
 
