@@ -23,7 +23,7 @@ pipeline {
 
           }
           steps {
-            sh 'mvn -U clean package -Dir=/war; touch test;ls -ltrh'
+            sh 'mvn -U clean package -Dir=/war; touch test;ls -ltrh;pwd'
           }
         }
 
