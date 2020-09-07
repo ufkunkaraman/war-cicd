@@ -24,7 +24,7 @@ pipeline {
 
           }
           steps {
-            sh 'mvn -U clean package -Dir=/war; project_name=$(xml_grep --text_only \'/project/name\' pom.xml); project_version=$(xml_grep --text_only \'/project/version\' pom.xml);mkdir /war/${JOB_NAME}/   -p ; cp null/$project_name-$project_version.war /war/${JOB_NAME}/ -r ;mkdir /war/${JOB_NAME}/arsiv -p ;times=$(date "+%m.%d.%y-%H:%M:%S");cp null/$project_name-$project_version.war /war/${JOB_NAME}/arsiv/$project_name-$project_version-$times.war -r '
+            sh 'mvn -U clean package -Dir=/war; project_name=$(xml_grep --text_only \'/project/name\' pom.xml); project_version=$(xml_grep --text_only \'/project/version\' pom.xml);mkdir /war/${JOB_NAME}/   -p ; cp null/$project_name-$project_version.war /war/${JOB_NAME}/ -r ;mkdir /war/${JOB_NAME}/arsiv -p ;times=$(date "+%m.%d.%y-%H:%M:%S");cp null/$project_name-$project_version.war /war/${JOB_NAME}/arsiv/$project_name-$project_version-$times.war -r; echo "/war/${JOB_NAME}/$project_name-$project_version.war" >/war/${JOB_NAME}/arsiv/deploywar.info  '
           }
         }
 
@@ -55,7 +55,7 @@ pipeline {
 
           }
           steps {
-            sh 'python3 /code/tomcat_publisher.py -t "${test_tomcats_nodes}"'
+            sh 'warfile=$(cat /war/${JOB_NAME}/arsiv/deploywar.info); python3 /code/tomcat_publisher.py -t "${test_tomcats_nodes}" -w  "${warfile}" -o "test"'
           }
         }
 
@@ -143,13 +143,13 @@ pipeline {
     developer = 'developer'
     tester = 'developer'
     cicdcontrol = '192.168.1.39:5000'
-    tomcat_nodes = ' [ {"name": "tomcat","ip":"172.16.232.230"},{"name": "tomcat2","ip":"172.16.232"}]'
+    tomcat_nodes = '{"1":{"name":"test","address":"172.16.232.230:8080","username":"admin","password":"password","tomcat_path":"/sample"},"2":{"name":"test","address":"172.16.232.230:8080","username":"admin","password":"password","tomcat_path":"/sample3"}}'
     tomcat_port = '8080'
     tomcat_username = 'admin'
     tomcat_password = 'admin'
     tomcat_host = '172.16.232.230'
     context_path = 'myApplication'
     artifact = 'artifact'
-    test_tomcats_nodes = '{{"name":"tomcat","ip":"172.16.232.230"},{"name": "tomcat","ip":"172.16.232.230"}}'
+    test_tomcats_nodes = '{"1":{"name":"test","address":"172.16.232.230:8080","username":"admin","password":"password","tomcat_path":"/sample"},"2":{"name":"test","address":"172.16.232.230:8080","username":"admin","password":"password","tomcat_path":"/sample3"}}'
   }
 }
