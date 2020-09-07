@@ -11,7 +11,7 @@ pipeline {
 
           }
           steps {
-            sh 'echo "                Database engine is ${testnodeip}"'
+            sh 'echo "Git branch is ${GIT_BRANCH}";echo "Git url is ${GIT_URL}";echo "Job name is ${JOB_NAME}"'
             sh ' export project_name=$(xml_grep --text_only \'/project/name\' pom.xml); export project_version=$(xml_grep --text_only \'/project/version\' pom.xml)'
           }
         }
