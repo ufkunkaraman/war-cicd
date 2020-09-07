@@ -38,6 +38,7 @@ pipeline {
           steps {
             sh 'printenv'
             sh 'pwd;ls -ltrh '
+            sh 'echo "$project_name"'
           }
         }
 
