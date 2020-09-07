@@ -67,9 +67,8 @@ pipeline {
 
           }
           steps {
-            sh 'for i in {0..$(echo \'${tomcat_nodes}\' | jq \'length\')}; do  echo """Number: $i , ip=$(echo "${tomcat_nodes}"|jq ".[$i].ip") """; done'
-            sh '''curl -v -u ${tomcat_username}:${tomcat_password} -T ${artifact} \'http://\'${tomcat_host}\':\'${tomcat_port}\'/manager/text/deploy?path=//\'${context_path}\'\'
-'''
+            sh 'echo "test"'
+            sh 'echo "test"'
           }
         }
 
@@ -86,7 +85,7 @@ pipeline {
 
           }
           steps {
-            sh '                echo "Database engine is ${testnodeip}"'
+            sh 'warfile=$(cat /war/${JOB_NAME}/arsiv/deploywar.info); python3 /code/tomcat_publisher.py -t "${tomcat_nodes}" -w  "${warfile}" -o "test"'
           }
         }
 
@@ -98,7 +97,7 @@ pipeline {
 
           }
           steps {
-            sh 'python3 app.py'
+            echo 's'
           }
         }
 
@@ -144,12 +143,6 @@ pipeline {
     tester = 'developer'
     cicdcontrol = '192.168.1.39:5000'
     tomcat_nodes = '{"1":{"name":"test","address":"172.16.232.230:8080","username":"admin","password":"password","tomcat_path":"/sample"},"2":{"name":"test","address":"172.16.232.230:8080","username":"admin","password":"password","tomcat_path":"/sample3"}}'
-    tomcat_port = '8080'
-    tomcat_username = 'admin'
-    tomcat_password = 'admin'
-    tomcat_host = '172.16.232.230'
-    context_path = 'myApplication'
-    artifact = 'artifact'
     test_tomcats_nodes = '{"1":{"name":"test","address":"172.16.232.230:8080","username":"admin","password":"password","tomcat_path":"/sample"},"2":{"name":"test","address":"172.16.232.230:8080","username":"admin","password":"password","tomcat_path":"/sample3"}}'
   }
 }
