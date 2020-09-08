@@ -3,7 +3,7 @@ pipeline {
   stages {
     stage('Build') {
       parallel {
-        stage('Developer Confirmation') {
+        stage('Start') {
           agent {
             node {
               label 'master'
@@ -11,8 +11,7 @@ pipeline {
 
           }
           steps {
-            sh 'echo "Git branch is ${GIT_BRANCH}";echo "Git url is ${GIT_URL}";echo "Job name is ${JOB_NAME}"'
-            sh ' export project_name=$(xml_grep --text_only \'/project/name\' pom.xml); export project_version=$(xml_grep --text_only \'/project/version\' pom.xml)'
+            echo 'Start'
           }
         }
 
