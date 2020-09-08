@@ -71,14 +71,14 @@ pipeline {
 
           }
           steps {
-            sh 'warfile=$(cat /war/${JOB_NAME}/deployinfo/deploywar.info); python3 /code/tomcat_publisher.py -t "${tomcats_nodes}" -w  "${warfile}"'
             input(message: 'developer confirm', id: 'developer confirm', ok: 'deploy go go go')
           }
         }
 
-        stage('finish') {
+        stage('deploy tomcats ') {
           steps {
-            echo 'finish'
+            echo 'tomcats deploy '
+            sh 'warfile=$(cat /war/${JOB_NAME}/deployinfo/deploywar.info); python3 /code/tomcat_publisher.py -t "${tomcats_nodes}" -w  "${warfile}"'
           }
         }
 
