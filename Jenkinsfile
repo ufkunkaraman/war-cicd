@@ -24,7 +24,6 @@ pipeline {
           }
           steps {
             sh 'mvn -U clean package -Dir=/war; project_name=$(xml_grep --text_only \'/project/name\' pom.xml); project_version=$(xml_grep --text_only \'/project/version\' pom.xml);mkdir /war/${JOB_NAME}/   -p ; cp null/$project_name-$project_version.war /war/${JOB_NAME}/ -r ;mkdir /war/${JOB_NAME}/arsiv -p ;times=$(date "+%m.%d.%y-%H:%M:%S");cp null/$project_name-$project_version.war /war/${JOB_NAME}/arsiv/$project_name-$project_version-$times.war -r;mkdir -p /war/${JOB_NAME}/deployinfo/; echo "/war/${JOB_NAME}/$project_name-$project_version.war" >/war/${JOB_NAME}/deployinfo/deploywar.info  '
-            input(message: 'Tester Deploy ', id: 'Tester Deploy ', submitter: 'Tester Deploy ', submitterParameter: 'Tester Deploy ', ok: 'go')
             sh 'printenv'
           }
         }
@@ -63,7 +62,7 @@ pipeline {
 
     stage('Developer Corfirmation') {
       parallel {
-        stage('Developer Corfirmation') {
+        stage('Deploy start ') {
           agent {
             node {
               label 'master'
@@ -71,7 +70,7 @@ pipeline {
 
           }
           steps {
-            input(message: 'developer confirm', id: 'developer confirm', ok: 'deploy go go go')
+            echo 'deploy start '
           }
         }
 
