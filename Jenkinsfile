@@ -142,7 +142,7 @@ pipeline {
     developer = 'developer'
     tester = 'developer'
     cicdcontrol = '192.168.1.39:5000'
-    tomcat_nodes = '{"1":{"name":"test","address":"172.16.232.230","port":"8080","username":"admin","password":"password","tomcat_path":"/sample","address_alias":"www.sebit.com"},"2":{"name":"test2","address":"172.16.232.230","port":"8080","username":"admin","password":"password","tomcat_path":"/sample","address_alias":"www.sebit.com"}}'
-    test_tomcats_nodes = '{"1":{"name":"test","address":"172.16.232.230","port":"8080","username":"admin","password":"password","tomcat_path":"/sample","address_alias":"www.sebit.com"},"2":{"name":"test2","address":"172.16.232.230","port":"8080","username":"admin","password":"password","tomcat_path":"/sample","address_alias":"www.sebit.com"}}'
+    tomcat_nodes = '{"1":{"name":"test","address":"172.16.232.230","port":"8080","username":"admin","password":"password","tomcat_path":"/sample","address_alias":"www.sebit.com"},"2":{"name":"test2","address":"172.16.232.230","port":"8080","username":"admin","password":"password","tomcat_path":"/sample3","address_alias":"www.sebit.com"}}'
+    test_tomcats_nodes = '{"1":{"name":"test","address":"172.16.232.230","port":"8080","username":"admin","password":"password","tomcat_path":"/sample","address_alias":"www.sebit.com"},"2":{"name":"test2","address":"172.16.232.230","port":"8080","username":"admin","password":"password","tomcat_path":"/sample3","address_alias":"www.sebit.com"}}'
   }
 }
