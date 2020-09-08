@@ -60,7 +60,7 @@ pipeline {
       }
     }
 
-    stage('Developer Corfirmation') {
+    stage('Deploy') {
       parallel {
         stage('Deploy start ') {
           agent {
