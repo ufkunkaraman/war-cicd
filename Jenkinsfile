@@ -16,7 +16,7 @@ pipeline {
           }
         }
 
-        stage('builder node ') {
+        stage('Builder  code') {
           agent {
             node {
               label 'master'
@@ -28,7 +28,7 @@ pipeline {
           }
         }
 
-        stage('print env') {
+        stage('Tester deploy or not') {
           agent {
             node {
               label 'master'
@@ -37,8 +37,7 @@ pipeline {
           }
           steps {
             sh 'printenv'
-            sh 'pwd;ls -ltrh '
-            sh 'echo "${project_name}"'
+            input(message: 'tester deploy or not', id: 'tester deploy or not', ok: 'go go go')
           }
         }
 
@@ -47,7 +46,7 @@ pipeline {
 
     stage('Test') {
       parallel {
-        stage('Run Code') {
+        stage('Deploy war  all Tomcats ') {
           agent {
             node {
               label 'master'
@@ -67,8 +66,6 @@ pipeline {
 
           }
           steps {
-            sh 'echo "test"'
-            sh 'echo "test"'
             input(message: 'Deploy or not', id: 'Deploy or not', ok: 'go go go')
           }
         }
@@ -76,7 +73,7 @@ pipeline {
       }
     }
 
-    stage('Deploy') {
+    stage('Developer Corfirmation') {
       parallel {
         stage('Developer Corfirmation') {
           agent {
@@ -90,43 +87,7 @@ pipeline {
           }
         }
 
-        stage('deploy code') {
-          agent {
-            node {
-              label 'master'
-            }
-
-          }
-          steps {
-            echo 's'
-          }
-        }
-
-      }
-    }
-
-    stage('Deploy Control') {
-      parallel {
-        stage('Deploy Control') {
-          agent {
-            node {
-              label 'master'
-            }
-
-          }
-          steps {
-            echo 'deploy control developer'
-            sh 'echo "control code if success or not"'
-          }
-        }
-
         stage('finish') {
-          agent {
-            node {
-              label 'master'
-            }
-
-          }
           steps {
             echo 'finish'
           }
