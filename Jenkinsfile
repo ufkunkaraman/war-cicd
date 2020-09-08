@@ -69,6 +69,7 @@ pipeline {
           steps {
             sh 'echo "test"'
             sh 'echo "test"'
+            input(message: 'Deploy or not', id: 'Deploy or not', ok: 'go go go')
           }
         }
 
