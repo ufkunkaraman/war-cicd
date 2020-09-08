@@ -15,7 +15,7 @@ pipeline {
           }
         }
 
-        stage('Builder  code') {
+        stage('Build  code') {
           agent {
             node {
               label 'master'
