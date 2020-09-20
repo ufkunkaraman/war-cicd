@@ -87,7 +87,7 @@ pipeline {
     stage('UnDeploy') {
       steps {
         input(message: 'undeploy', id: 'undeploy', ok: 'undeploy', submitter: 'undeploy', submitterParameter: 'undeploy')
-        sh 'path=$(cat /war/${JOB_NAME}/version/ );previous_version=$(ls -ltrh $path|tail -1| awk  \'{print $9,$10,$11}\');python3 /code/tomcat_publisher.py -t "${tomcats_nodes}" -w  "/war/${JOB_NAME}/version/${previous_version}"'
+        sh 'previous_version=$(ls -ltrh /war/${JOB_NAME}/version/$path|tail -1| awk  \'{print $9,$10,$11}\');python3 /code/tomcat_publisher.py -t "${tomcats_nodes}" -w  "/war/${JOB_NAME}/version/${previous_version}"'
       }
     }
 
