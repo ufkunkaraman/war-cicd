@@ -4,7 +4,7 @@
     <groupId>com.boxfuse.samples</groupId>
     <artifactId>world</artifactId>
     <packaging>war</packaging>
-    <version>2.0</version>
+    <version>3.0</version>
     <name>world</name>
     <url>https://github.com/boxfuse/boxfuse-sample-java-war-hello</url>
     <dependencies>
