@@ -24,7 +24,7 @@ pipeline {
           }
           steps {
             sh 'mvn -U clean package -Dir=/war; project_name=$(xml_grep --text_only \'/project/name\' pom.xml); project_version=$(xml_grep --text_only \'/project/version\' pom.xml);mkdir /war/${JOB_NAME}/arsiv   -p ; cp null/$project_name-$project_version.war /war/${JOB_NAME}/ -r ;times=$(date "+%m.%d.%y-%H:%M:%S");mkdir /war/${JOB_NAME}/arsiv/time    -p ; cp null/$project_name-$project_version.war /war/${JOB_NAME}/arsiv/time/$project_name-$project_version-$times.war -r;mkdir /war/${JOB_NAME}/arsiv/version -p ; cp null/$project_name-$project_version.war /war/${JOB_NAME}/arsiv/version/$project_name-$project_version.war -r;mkdir -p /war/${JOB_NAME}/deployinfo/; echo "/war/${JOB_NAME}/$project_name-$project_version.war" >/war/${JOB_NAME}/deployinfo/deploywar.info  '
-            sh 'printenv;previous_version=$(ls -ltrh /war/${JOB_NAME}/version/$path|tail -1| awk  \'{print $9,$10,$11}\');echo   "/war/${JOB_NAME}/version/${previous_version}"'
+            sh 'printenv;previous_version=$(ls -ltrh /war/${JOB_NAME}/arsiv/version/$path|tail -1| awk  \'{print $9,$10,$11}\');echo   "/war/${JOB_NAME}/arsiv/version/${previous_version}"'
           }
         }
 
@@ -87,7 +87,7 @@ pipeline {
     stage('UnDeploy') {
       steps {
         input(message: 'undeploy', id: 'undeploy', ok: 'undeploy', submitter: 'undeploy', submitterParameter: 'undeploy')
-        sh 'previous_version=$(ls -ltrh /war/${JOB_NAME}/version/$path|tail -1| awk  \'{print $9,$10,$11}\');python3 /code/tomcat_publisher.py -t "${tomcats_nodes}" -w  "/war/${JOB_NAME}/version/${previous_version}"'
+        sh 'previous_version=$(ls -ltrh /war/${JOB_NAME}/arsiv/version/$path|tail -1| awk  \'{print $9,$10,$11}\');python3 /code/tomcat_publisher.py -t "${tomcats_nodes}" -w  "/war/${JOB_NAME}/version/${previous_version}"'
       }
     }
 
