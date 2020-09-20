@@ -99,7 +99,7 @@ pipeline {
     developer = 'developer'
     tester = 'developer'
     cicdcontrol = '192.168.1.39:5000'
-    tomcats_nodes = '{"1":{"name":"test","address":"172.17.233.44","port":"8080","username":"admin","password":"password","tomcat_path":"/sample","address_alias":"172.17.233.44"}}'
+    tomcats_nodes = '{"1":{"name":"test","address":"172.16.232.230","port":"8080","username":"admin","password":"password","tomcat_path":"/sample","address_alias":"www.sebit.com"},"2":{"name":"test2","address":"172.16.232.230","port":"8080","username":"admin","password":"password","tomcat_path":"/sample3","address_alias":"www.sebit.com"}}'
     test_tomcats_nodes = '{"1":{"name":"test","address":"172.16.232.230","port":"8080","username":"admin","password":"password","tomcat_path":"/sample","address_alias":"www.sebit.com"},"2":{"name":"test2","address":"172.16.232.230","port":"8080","username":"admin","password":"password","tomcat_path":"/sample3","address_alias":"www.sebit.com"}}'
   }
 }
